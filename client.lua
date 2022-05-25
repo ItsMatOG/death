@@ -87,7 +87,7 @@ Citizen.CreateThread(function()
             end
 	        NetworkResurrectLocalPlayer(playerPos, true, true, false)
             RequestAnimDict('dead')
-			TaskPlayAnim(PlayerPedId(), 'dead', 'dead_e', 8.0, -8.0, -1, 2, 0, false, false, false)
+	    TaskPlayAnim(PlayerPedId(), 'dead', 'dead_e', 8.0, -8.0, -1, 2, 0, false, false, false)
             SetPlayerInvincible(PlayerId(), true)
             SetEntityMaxHealth(ped, 200)
             SetPedArmour(ped, 0)
@@ -129,7 +129,7 @@ Citizen.CreateThread(function()
                         hold = 4
                     elseif IsControlPressed(0, RESPAWN_CONTROL) and hold == 0 then
                         coords = GetClosestSpawn(spawnpoints)
-				        RespawnPed(ped, coords)
+			RespawnPed(ped, coords)
                     end
                 end
             end
@@ -158,7 +158,7 @@ Citizen.CreateThread(function()
                         hold = 4
                     elseif IsControlPressed(0, RESPAWN_CONTROL) and hold == 0 then
                         coords = GetClosestSpawn(spawnpoints)
-				        RespawnPed(ped, coords)
+		  	RespawnPed(ped, coords)
                     end
                 end
             end
@@ -242,8 +242,8 @@ function RevivePed(ped)
     ClearPedTasks(ped)
     SetEntityMaxHealth(ped, 200)
     StopEntityFire(GetPlayerPed(-1))
-	isInvincible = false
-	ClearPedBloodDamage(ped)
+    isInvincible = false
+    ClearPedBloodDamage(ped)
 end
 
 function RespawnPed(ped, coords)
@@ -254,13 +254,13 @@ function RespawnPed(ped, coords)
     PlaySoundFrontend(-1, "Zoom_Out", "DLC_HEIST_PLANNING_BOARD_SOUNDS", 1)
     DoScreenFadeOut(500)
     Citizen.Wait(2000)
-	ClearPedTasks(ped)
+    ClearPedTasks(ped)
     SetEntityMaxHealth(ped, 200)
-	SetEntityCoordsNoOffset(ped, coords.x, coords.y, coords.z, false, false, false, true)
-	NetworkResurrectLocalPlayer(coords.x, coords.y, coords.z, 0.0, true, false)
-	SetPlayerInvincible(ped, false) 
-	TriggerEvent('playerSpawned', coords.x, coords.y, coords.z, 0.0)
-	ClearPedBloodDamage(ped)
+    SetEntityCoordsNoOffset(ped, coords.x, coords.y, coords.z, false, false, false, true)
+    NetworkResurrectLocalPlayer(coords.x, coords.y, coords.z, 0.0, true, false)
+    SetPlayerInvincible(ped, false) 
+    TriggerEvent('playerSpawned', coords.x, coords.y, coords.z, 0.0)
+    ClearPedBloodDamage(ped)
     DoScreenFadeIn(500)
     PlaySoundFrontend(-1, "Zoom_In", "DLC_HEIST_PLANNING_BOARD_SOUNDS", 1)
     drawNotification("~w~You have been ~b~respawned ~w~at the ~y~nearest hospital~w~.")
@@ -279,8 +279,8 @@ function DisplayHelpText(text)
 end
 
 function DrawMissionText(msg, time)
-	ClearPrints()
-	BeginTextCommandPrint('STRING')
-	AddTextComponentSubstringPlayerName(msg)
-	EndTextCommandPrint(time, true)
+    ClearPrints()
+    BeginTextCommandPrint('STRING')
+    AddTextComponentSubstringPlayerName(msg)
+    EndTextCommandPrint(time, true)
 end
