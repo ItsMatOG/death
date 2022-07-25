@@ -78,6 +78,7 @@ Citizen.CreateThread(function()
         local vehicle = GetVehiclePedIsIn(ped, false)
         if IsEntityDead(ped) and not IsPedInVehicle(ped, vehicle, false) then
             local playerPos = GetEntityCoords(ped, true)
+            Citizen.Wait(5000)
             SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
             ClearPedTasks(ped)
             Citizen.Wait(200)
